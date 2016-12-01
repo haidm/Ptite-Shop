@@ -19,9 +19,21 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     base_default
+ * @package     rwd_default
  * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php echo $this->getText(); ?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php $_menu = $this->getLayout()->createBlock('cms/block')->setBlockId('topmenu');
+ ?>
+
+<?php if($_menu): ?>
+            <?php echo $_menu->toHtml() ?>
+<?php endif ?>
