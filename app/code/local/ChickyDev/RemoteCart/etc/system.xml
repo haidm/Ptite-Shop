@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <remotecart>
+            <label>Remote Cart</label>
+            <sort_order>1</sort_order>
+        </remotecart>
+    </tabs>
+    <sections>
+        <remotecart>
+            <label>Remote Cart Cài đặt</label>
+            <tab>remotecart</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>40</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Cài Đặt</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <rating translate="label">
+                            <label>Tỉ Giá</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Tỉ giá VNĐ/Nhân Dân Tệ. Ví dụ: 3430 tương đương 3430 vnđ = 1 CNY.</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rating>
+                    </fields>
+                </settings>
+            </groups>
+        </remotecart>
+    </sections>
+</config>

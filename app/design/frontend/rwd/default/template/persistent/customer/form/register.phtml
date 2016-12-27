@@ -32,7 +32,7 @@
  */
 /** @var $this Mage_Customer_Block_Form_Register */
 ?>
-<div class="account-create">
+<div class="col-md-8">
     <div class="page-title">
         <h1><?php echo $this->__('Create an Account') ?></h1>
     </div>
@@ -158,32 +158,15 @@
                     </div>
                 </li>
                 <?php echo $this->getChildHtml('form.additional.info'); ?>
-                <?php if ($this->isNewsletterEnabled()): ?>
-                    <li class="control">
-                        <div class="input-box">
-                            <input type="checkbox" name="is_subscribed" title="<?php echo $this->quoteEscape($this->__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                        </div>
-                        <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-                    </li>
-                <?php endif ?>
-                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
             </ul>
-            <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
         </div>
         <div class="buttons-set">
             <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
-            <button type="submit" title="<?php echo $this->quoteEscape($this->__('Register')) ?>" class="button"><span><span><?php echo $this->__('Register') ?></span></span></button>
+            <button busy-disabled="true" type="submit" busy="Đang đăng kí.." class="button btn btn-default ng-isolate-scope">Đăng kí
+            </button>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
     </form>
-    <script type="text/javascript">
-    //<![CDATA[
-        var dataForm = new VarienForm('form-validate', true);
-        <?php if($this->getShowAddressFields()): ?>
-        new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
-        <?php endif; ?>
-    //]]>
-    </script>
 </div>

@@ -53,7 +53,13 @@
     </div>
 </footer>
 <!-- End Footer -->
-
-<script type="application/javascript" src="/js/lib/jquery/jquery-1.10.2.min.js"></script>
 <script type="application/javascript" src="<?php echo $this->getSkinUrl('js/init.js'); ?>"></script>
 <script type="application/javascript" src="<?php echo $this->getSkinUrl('js/scripts.js'); ?>"></script>
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()):
+    $name = Mage::getSingleton('customer/session')->getCustomer()->getName(); ?>
+    <script>
+        $j(document).ready(function(){
+            $j('.signup').html('<a href="<?php echo $this->getUrl("customer/account") ?>"><i class="fa fa-sign-in" style="font-size: 35px;"></i><span><?php echo $name ?></span></a>');
+        })
+    </script>
+<?php endif; ?>

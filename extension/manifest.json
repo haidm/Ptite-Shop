@@ -1,0 +1,14 @@
+{
+  "name": "Ptite Shop",
+  "version": "1.0",
+  "description": "Ptite Shop",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": [
+        "https://world.taobao.com/item/*"
+      ],
+      "js": ["js/jquery-1.12.4.min.js", "js/content.js"]
+    }
+  ]
+}

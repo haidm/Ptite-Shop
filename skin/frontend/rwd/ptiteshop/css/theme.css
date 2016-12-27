@@ -3411,7 +3411,7 @@ input.submit:hover {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #4c51e0;
+    color: #f40;
 }
 
 .post-header h5 span {
@@ -3896,7 +3896,7 @@ nav a {
     }
 
     ul.dropdown-menu li a:hover {
-        color: #4c51e0 !important;
+        color: #f40 !important;
     }
 
     /* Header Mega Menu */

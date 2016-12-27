@@ -3,7 +3,7 @@
 }
 
 .nav.navbar-nav.menu-right li a {
-    color: red;
+    color: #f40;
 }
 .nav.navbar-nav.menu-right li a:hover {
     color: #337ab7 !important;
@@ -173,4 +173,35 @@ p {
 .wrapper-quydinh strong.title {
     font-weight: bold;
     font-size: 17px;
+}
+.container {
+    padding-top: 100px;
+}
+.back-link {
+    display: inline-block
+}
+.customer-account .main {
+    overflow: hidden;
+    padding-top: 100px;
+    max-width: 1170px;
+    margin:auto;
+}
+.customer-account .col-left-first {
+    float: left;
+}
+.customer-account .col-main {
+    float: left;
+    margin-left: 10%;
+}
+.validation-advice {
+    color: red;
+}
+.no-display {
+    display: none;
+}
+.background-image {
+    opacity: 1;
+}
+.background-image img {
+    display: block;
 }

@@ -43,9 +43,13 @@
 </head>
 <body data-fade-in="true" cz-shortcut-listen="true">
 <?php echo $this->getChildHtml('header') ?>
+<div class="container">
 
         <?php echo $this->getChildHtml('global_messages') ?>
         <?php echo $this->getChildHtml('content') ?>
+        <?php echo $this->getChildHtml('rightnav') ?>
+
+</div>
 <div style="clear:both; width: 100%"></div>
         <?php echo $this->getChildHtml('footer_before') ?>
         <?php echo $this->getChildHtml('footer') ?>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ChickyDev_RemoteCart>
+            <active>true</active>
+            <codePool>local</codePool>
+        </ChickyDev_RemoteCart>
+    </modules>
+</config>

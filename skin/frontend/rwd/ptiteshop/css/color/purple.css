@@ -28,7 +28,7 @@ h4.fitness-label,
 .connected-icons li a i:hover:after,
 .phone-number h1:after
 {
-    background-color: #4c51e0
+    background-color: #f40
 }
 a:focus,
 a:hover, 
@@ -79,7 +79,7 @@ a:hover .subheading,
 .read-more-link2.color span,
 #clock .digit
 {
-    color: #4c51e0
+    color: #f40
 }
 .btn-primary,
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:focus:active,
@@ -97,21 +97,21 @@ a:hover .subheading,
 .btn-primary.active, .btn-primary:active,
 .price-table-featured .price-box
 { 
-    border-color: #4c51e0
+    border-color: #f40
 }
 #price-list .featured .price-table,
 .progress-bars-4 .progress-bar-tooltip:after
 {
-    border-top-color: #4c51e0
+    border-top-color: #f40
 }
 #video .play-btn:after,
 .music-bottom .play-btn:after,
 .play-bottom .play-btn:after,
 blockquote {
-    border-left-color: #4c51e0
+    border-left-color: #f40
 }
 .progress-svg circle {
-  	stroke: #4c51e0
+  	stroke: #f40
 }
 
 
