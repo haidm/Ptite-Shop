@@ -33,6 +33,69 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </rating>
+                        <muahang translate="label">
+                            <label>Phí mua hàng</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí mua hàng tính theo % cộng thêm ở trang đặt hàng.</comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </muahang>
+                        <kiemhang translate="label">
+                            <label>Phí kiểm hàng</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí kiểm hàng tính theo % cộng thêm ở trang đặt hàng.</comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </kiemhang>
+                        <cpn translate="label">
+                            <label>Phí chuyển phát nhanh</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí chuyển phát nhanh tính theo % cộng thêm ở trang đặt hàng.</comment>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cpn>
+                        <donggo translate="label">
+                            <label>Phí đóng gỗ</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí đóng gỗ tính theo % cộng thêm ở trang đặt hàng.</comment>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </donggo>
+                        <devo translate="label">
+                            <label>Phí dễ vỡ</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí dễ vỡ tính theo % cộng thêm ở trang đặt hàng.</comment>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </devo>
+                        <feepercent translate="label">
+                            <label>Tính tiền sản phẩm theo %</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí tính thêm theo % giá trị đơn hàng.</comment>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </feepercent>
+                        <feeperitem translate="label">
+                            <label>Tính tiền sản phẩm theo sản phẩm</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Phí tính thêm theo xxx tệ trên 1 sản phẩm.</comment>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </feeperitem>
                     </fields>
                 </settings>
             </groups>

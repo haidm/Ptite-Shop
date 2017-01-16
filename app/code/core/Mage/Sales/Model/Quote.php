@@ -1344,6 +1344,29 @@ class Mage_Sales_Model_Quote extends Mage_Core_Model_Abstract
             $this->setBaseGrandTotal((float) $this->getBaseGrandTotal() + $address->getBaseGrandTotal());
         }
 
+        $info = Mage::helper('chickydev_remotecart')->getFeeInfo();
+
+        $fee = 0;
+
+        if (!empty($info)) {
+            foreach ($info as $k => $f) {
+                $path = 'remotecart/settings/'.$k;
+                $fee += (float)Mage::getStoreConfig($path);
+            }
+        }
+
+        $newfee = ($fee / 100) * $this->getSubtotal();
+        Mage::log($newfee, null, 'duong.log', true);
+
+
+        if ($newfee != 0) {
+            $this->setFee($newfee);
+            $this->setBaseFee($newfee);
+        }
+
+        $this->setGrandTotal((float) $this->getGrandTotal() + $address->getGrandTotal() + $newfee);
+        $this->setBaseGrandTotal((float) $this->getBaseGrandTotal() + $address->getBaseGrandTotal() + $newfee);
+
         Mage::helper('sales')->checkQuoteAmount($this, $this->getGrandTotal());
         Mage::helper('sales')->checkQuoteAmount($this, $this->getBaseGrandTotal());
 

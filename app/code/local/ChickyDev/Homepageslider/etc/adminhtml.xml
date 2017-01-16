@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <homeslider translate="title" module="chickydev_homepageslider">
+            <title>Home Slider</title>
+            <sort_order>50</sort_order>
+            <action>adminhtml/homeslider/</action>
+            <!-- ... -->
+        </homeslider>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <homeslider translate="title" module="chickydev_homepageslider">
+                        <title>Home Slider</title>
+                        <sort_order>1</sort_order>
+                    </homeslider>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

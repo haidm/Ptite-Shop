@@ -128,6 +128,8 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             $this->_redirect('*/*/');
             return;
         }
+        $referer = $this->getRequest()->getServer('HTTP_REFERER');
+        $this->_getSession()->setReferer($referer);
         $this->getResponse()->setHeader('Login-Required', 'true');
         $this->loadLayout();
         $this->_initLayoutMessages('customer/session');
@@ -181,7 +183,11 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             }
         }
 
-        $this->_loginPostRedirect();
+        if ($this->_getSession()->getReferer()) {
+            $this->_redirectUrl($this->_getSession()->getReferer());
+        } else {
+            $this->_loginPostRedirect();
+        }
     }
 
     /**

@@ -365,7 +365,7 @@ class Mage_Customer_Model_Address_Abstract extends Mage_Core_Model_Abstract
 
         $this->implodeStreetAddress();
 
-        $this->_basicCheck();
+//        $this->_basicCheck();
 
         Mage::dispatchEvent('customer_address_validation_after', array('address' => $this));
 

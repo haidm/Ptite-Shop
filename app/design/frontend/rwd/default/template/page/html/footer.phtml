@@ -59,7 +59,12 @@
     $name = Mage::getSingleton('customer/session')->getCustomer()->getName(); ?>
     <script>
         $j(document).ready(function(){
-            $j('.signup').html('<a href="<?php echo $this->getUrl("customer/account") ?>"><i class="fa fa-sign-in" style="font-size: 35px;"></i><span><?php echo $name ?></span></a>');
+            $j('.signup').html('<a href="<?php echo $this->getUrl("customer/account") ?>"><span><?php echo $name ?></span></a>');
+            $j('.signup').after('<li><a href="<?php echo $this->getUrl("customer/account/logout") ?>"><i class="fa fa-sign-out" style="font-size: 35px;"></i><span>Thoát</span></a></li>');
         })
     </script>
 <?php endif; ?>
+<div class="shopping-cart-popup" onclick="location.href='<?php echo $this->getUrl("checkout/cart") ?>'">
+    <i class="fa fa-shopping-cart"></i>
+    <span class="cart-count"><?php echo $this->helper('checkout/cart')->getSummaryCount() ? $this->helper('checkout/cart')->getSummaryCount() : 0 ?></span>
+</div>

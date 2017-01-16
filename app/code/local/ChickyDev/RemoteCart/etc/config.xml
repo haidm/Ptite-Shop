@@ -2,7 +2,7 @@
 <config>
     <modules>
         <ChickyDev_RemoteCart>
-            <version>0.1.0</version>
+            <version>0.1.6</version>
         </ChickyDev_RemoteCart>
     </modules>
     <global>
@@ -13,7 +13,17 @@
             </chickydev_remotecart>
             <chickydev_remotecart_resource>
                 <class>ChickyDev_RemoteCart_Model_Resource</class>
+                <entities>
+                    <feeinfo>
+                        <table>feeinfo</table>
+                    </feeinfo>
+                </entities>
             </chickydev_remotecart_resource>
+            <sales>
+                <rewrite>
+                    <order_item>ChickyDev_RemoteCart_Model_Sales_Order_Item</order_item>
+                </rewrite>
+            </sales>
         </models>
         <blocks>
             <chickydev_remotecart>
@@ -32,6 +42,36 @@
                 </setup>
             </chickydev_remotecart_setup>
         </resources>
+        <events>
+            <catalog_product_load_after>
+                <observers>
+                    <remoteaddoption>
+                        <type>singleton</type>
+                        <class>chickydev_remotecart/observer</class>
+                        <method>catalogProductLoadAfter</method>
+                    </remoteaddoption>
+                </observers>
+            </catalog_product_load_after>
+            <sales_convert_quote_address_to_order>
+                <observers>
+                    <recalculategrandtotal>
+                        <type>singleton</type>
+                        <class>chickydev_remotecart/observer</class>
+                        <method>salesConvertQuoteToOrder</method>
+                    </recalculategrandtotal>
+                </observers>
+            </sales_convert_quote_address_to_order>
+        </events>
+        <fieldsets>
+            <sales_convert_quote>
+                <fee>
+                    <to_order>*</to_order>
+                </fee>
+                <base_fee>
+                    <to_order>*</to_order>
+                </base_fee>
+            </sales_convert_quote>
+        </fieldsets>
     </global>
     <frontend>
         <routers>

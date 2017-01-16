@@ -207,10 +207,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
      */
     public function addAction()
     {
-        if (!$this->_validateFormKey()) {
-            $this->_goBack();
-            return;
-        }
         $cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         try {
@@ -236,8 +232,18 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             if (!empty($related)) {
                 $cart->addProductsByIds(explode(',', $related));
             }
+            $item = $cart->getQuote()->getItemByProduct($product);
+            $rate = (float)Mage::getStoreConfig('remotecart/settings/rating');
+            $customPrice = $params['price']*$rate;
+            $item->setCustomPrice($customPrice);
+            $item->setOriginalCustomPrice($customPrice);
+            $item->getProduct()->setIsSuperMode(true);
 
             $cart->save();
+            Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+
+            echo "OK";
+            exit;
 
             $this->_getSession()->setCartWasUpdated(true);
 
@@ -506,7 +512,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
      */
     public function deleteAction()
     {
-        if ($this->_validateFormKey()) {
+//        if ($this->_validateFormKey()) {
             $id = (int)$this->getRequest()->getParam('id');
             if ($id) {
                 try {
@@ -517,9 +523,9 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
                     Mage::logException($e);
                 }
             }
-        } else {
-            $this->_getSession()->addError($this->__('Cannot remove the item.'));
-        }
+//        } else {
+//            $this->_getSession()->addError($this->__('Cannot remove the item.'));
+//        }
 
         $this->_redirectReferer(Mage::getUrl('*/*'));
     }

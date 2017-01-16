@@ -69,10 +69,12 @@
                 <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</href></action>
                 <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
 
+                <action method="addItem"><type>skin_css</type><name>css/bootstrap.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/init.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/ion-icons.min.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/etline-icons.min.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/theme.css</name><params/></action>
+                <action method="addItem"><type>skin_css</type><name>css/styles.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/custom.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/color/purple.css</name><params/></action>
                 <action method="addItem"><type>skin_css</type><name>css/font-awesome.min.css</name><params/></action>

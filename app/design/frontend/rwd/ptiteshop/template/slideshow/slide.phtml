@@ -1,37 +1,25 @@
+<?php
+/** @var ChickyDev_Homepageslider_Block_Slide $this */
+$slides = $this->getSlides();
+?>
 <!-- Hero -->
 <section id="hero" class="hero-fullscreen parallax" data-overlay-dark="2">
     <div class="background-image">
-        <img src="http://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg">
+        <?php foreach ($slides as $slide) { ?>
+            <img src="<?php echo $this->getUrl('media') . $slide->getImage() ?>">
+        <?php } ?>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="hero-content-slider mt20" data-autoplay="true" data-speed="3000">
+                <?php foreach ($slides as $slide) { ?>
                 <div class="col-sm-12 text-center">
-                    <h2>Welcome To PTITE SHOP<br><strong>GIẢI PHÁP ĐẶT HÀNG TQ-VN </strong></h2>
+                    <h2><strong><?php echo $slide->getTextlon() ?></strong></h2>
 
-                    <p class="lead mb40">"VÔ CÙNG NHANH"</p>
+                    <p class="lead mb40"><?php echo $slide->getTextnho() ?></p>
                 </div>
-                <div class="col-sm-12 text-center">
-                    <h2><strong>TỰ HÀO LÀ DỊCH VỤ SỐ 1 VN</strong></h2>
-
-                    <p class="lead mb40">"Uy tín - Chất lượng - Chính xác"</p>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <h2><strong>80% CÁC SHOP LỚN LỰA CHỌN CHÚNG TÔI</strong></h2>
-
-                    <p class="lead mb40">"Mức giá cạnh tranh nhất thị trường"</p>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <h2><strong>HÀNG VỀ CHỈ 4-6 NGÀY</strong></h2>
-
-                    <p class="lead mb40">"Mua hàng trong vòng 24h"</p>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <h2><strong>HỖ TRỢ TÌM HÀNG, TƯ VẤN KINH DOANH TẬN TÌNH</strong></h2>
-
-                    <p class="lead mb40">"Nhiệt tình - Chăm chỉ - Mến khách"</p>
-                </div>
+                <?php } ?>
             </div>
         </div>
         <div class="row">

@@ -7,4 +7,11 @@
  */ 
 class ChickyDev_RemoteCart_Helper_Data extends Mage_Core_Helper_Abstract {
 
+    public function getFeeInfo()
+    {
+        $quoteId = Mage::getSingleton("checkout/cart")->getQuote()->getId();
+        $feeinfo = Mage::getModel('chickydev_remotecart/feeinfo')->load($quoteId);
+        $info = unserialize($feeinfo->getInfo());
+        return $info;
+    }
 }

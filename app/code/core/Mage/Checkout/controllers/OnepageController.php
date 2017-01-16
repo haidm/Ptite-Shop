@@ -289,6 +289,8 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         }
 
         $session->clear();
+        $quote = Mage::getSingleton("checkout/cart")->getQuote();
+        $quote->setIsActive(0)->save();
         $this->loadLayout();
         $this->_initLayoutMessages('checkout/session');
         Mage::dispatchEvent('checkout_onepage_controller_success_action', array('order_ids' => array($lastOrderId)));

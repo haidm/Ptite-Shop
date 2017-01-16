@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ChickyDev_Homepageslider>
+            <active>true</active>
+            <codePool>local</codePool>
+        </ChickyDev_Homepageslider>
+    </modules>
+</config>

@@ -88,6 +88,14 @@ class Mage_Adminhtml_Block_Sales_Totals extends Mage_Sales_Block_Order_Totals
                 'label'     => $discountLabel
             ));
         }
+        $this->_totals['fee'] = new Varien_Object(array(
+            'code'      => 'fee',
+            'strong'    => true,
+            'value'     => $this->getSource()->getFee(),
+            'base_value'=> $this->getSource()->getBaseFee(),
+            'label'     => $this->helper('sales')->__('Phí'),
+            'area'      => 'footer'
+        ));
 
         $this->_totals['grand_total'] = new Varien_Object(array(
             'code'      => 'grand_total',
