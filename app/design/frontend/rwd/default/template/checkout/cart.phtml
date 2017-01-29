@@ -5,7 +5,7 @@
  * @var $this Mage_Checkout_Block_Cart
  */
 ?>
-<?php $info = Mage::helper('chickydev_remotecart')->getFeeInfo(); ?>
+<?php $infoa = Mage::helper('chickydev_remotecart')->getFeeInfo(); ?>
 <?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
 <div class="shoppingcart cart <?php echo $_priceDisplay; ?>">
     <div class="page-title title-buttons">
@@ -21,31 +21,25 @@
                     <div class="checkRight">
                         <ul class="list-inline list-check-service padding-right-0">
                             <li>
-                                <input type="checkbox" class="fee" name="muahang" value="1" disabled <?php echo isset($info['muahang']) ? 'checked' : '' ?> id="muahang">
-                                <label class="checkbox-inline" for="muahang" title="Phí mua hàng(2%)">
-                                    <span><i class="fa fa-shopping-cart"></i> Mua hàng</span>
-                                </label>
-                            </li>
-                            <li>
-                                <input type="checkbox" class="fee" name="kiemhang" value="1" <?php echo isset($info['kiemhang']) ? 'checked' : '' ?> id="kiemhang">
+                                <input type="checkbox" class="fee" name="kiemhang" value="1" <?php echo isset($infoa['kiemhang']) ? 'checked' : '' ?> id="kiemhang">
                                 <label class="checkbox-inline" for="kiemhang" title="Phí kiểm hàng(1.5%)">
                                     <span><i class="fa fa-thumbs-up"></i> Kiểm hàng</span>
                                 </label>
                             </li>
                             <li>
-                                <input type="checkbox" class="fee" name="cpn" value="1" <?php echo isset($info['cpn']) ? 'checked' : '' ?> id="cpn">
+                                <input type="checkbox" class="fee" name="cpn" value="1" <?php echo isset($infoa['cpn']) ? 'checked' : '' ?> id="cpn">
                                 <label class="checkbox-inline" for="cpn" title="Phí CPN(0%)">
                                     <span><i class="fa fa-rocket"></i> CPN</span>
                                 </label>
                             </li>
                             <li>
-                                <input type="checkbox" class="fee" name="donggo" value="1" <?php echo isset($info['donggo']) ? 'checked' : '' ?> id="donggo">
+                                <input type="checkbox" class="fee" name="donggo" value="1" <?php echo isset($infoa['donggo']) ? 'checked' : '' ?> id="donggo">
                                 <label class="checkbox-inline" for="donggo" title="Phí đóng gỗ(0%)">
                                     <span><i class="fa fa-archive"></i> Đóng gỗ</span>
                                 </label>
                             </li>
                             <li>
-                                <input type="checkbox" class="fee" name="devo" value="1" <?php echo isset($info['devo']) ? 'checked' : '' ?> id="devo">
+                                <input type="checkbox" class="fee" name="devo" value="1" <?php echo isset($infoa['devo']) ? 'checked' : '' ?> id="devo">
                                 <label class="checkbox-inline" for="devo" title="Phí dễ vỡ(0%)">
                                     <span><i class="fa fa-glass"></i> Dễ vỡ</span>
                                 </label>
@@ -76,7 +70,7 @@
                                             <img src="<?php echo $info['image'] ?>">
                                         </div>
                                         <div class="div-infoProduct">
-                                            <div class="tb-product-link" style="height: 30px;margin-bottom: 5px">
+                                            <div class="tb-product-link" style="height: 30px;margin-bottom: 5px; max-width: 400px;">
                                                 <a style="color: #0b6198;" href="<?php echo $info['url'] ?>" target="_blank" title="<?php echo $info['url'] ?>"><?php echo $info['name'] ?></a>
                                             </div>
                                             <?php foreach ($info['option'] as $option): ?>
@@ -129,6 +123,21 @@
                                     <div class="shop-total-price">
                                     <span class="ng-binding"><?php echo number_format($this->getQuote()->getSubtotal()) ?><sup>đ</sup>
                                     </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ccc">
+                                <td>
+                                    <span class="popup-services">Tính phí</span>
+                                </td>
+                                <td class="text-right">
+                                    <div style="text-align: left">
+                                        <input type="radio" name="muahang" style="width: auto" id="theosp" value="2" <?php echo (isset($infoa['muahang']) && $infoa['muahang'] == 2) ? 'checked' : '' ?> />
+                                        <label for="theosp">Theo Sản Phẩm</label>
+                                    </div>
+                                    <div style="text-align: left">
+                                        <input type="radio" name="muahang" id="theoorder" style="width: auto" value="1" <?php echo (isset($infoa['muahang']) && $infoa['muahang'] == 1) ? 'checked' : '' ?> />
+                                        <label for="theoorder">Theo giá trị đơn hàng</label>
                                     </div>
                                 </td>
                             </tr>

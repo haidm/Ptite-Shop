@@ -1,0 +1,138 @@
+<div class="col-md-12 dathang">
+    <h1>Hướng dẫn đặt hàng</h1>
+    <div class="congcu">
+        <h2>CÁCH 1: DÙNG CÔNG CỤ</h2>
+        <p>Cài đặt công cụ đặt hàng và tiến hành đặt hàng trực tiếp tại Taobao, Tmall, 1688. <br />Công cụ đặt hàng chỉ tương thích với trình duyệt Chrome hoặc Cốc Cốc.</p>
+        <center><a target="_blank" href="#" class="btn btn-lg btn-primary btn-scroll wrapper-icon-button">
+            <i class="fa fa-chrome icon-button" aria-hidden="true"></i>
+            <span class="icon-button-text">
+                             CLICK VÀO ĐÂY ĐỂ CÀI ĐẶT CÔNG CỤ ĐẶT HÀNG
+                        </span>
+        </a></center>
+    </div>
+    <div class="mota">
+        <h2>CÁCH 2: COPY LINK</h2>
+        <p>Vui lòng cung cấp đường link tới sản phẩm tại Taobao, Tmall hoặc 1688 và các thông tin liên quan.</p>
+
+        <form id="addmota" action="<?php echo $this->getUrl('dathang/index/addmota') ?>" method="POST">
+            <div class="form-group">
+                <label for="url">Đường link đến sản phẩm:</label>
+                <input type="text" name="url" class="form-control" id="url" required>
+            </div>
+            <div class="form-group">
+                <label for="gia">Giá sản phẩm (nhân dân tệ):</label>
+                <input type="number" name="gia" class="form-control" id="gia" min="0" step="0.01" required placeholder="Tỉ giá: <?php echo Mage::getStoreConfig('remotecart/settings/rating') ?> VNĐ">
+                <p><b>Giá VNĐ:</b> <span class="customprice">0</span></p>
+            </div>
+            <div class="form-group">
+                <label for="qty">Số lượng:</label>
+                <input type="number" name="qty" class="form-control" style="width: 50px" id="qty" value="1" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="mota">Mô tả về sản phẩm (kích cỡ, màu...):</label>
+                <textarea class="form-control" id="mota" name="mota" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Thêm vào giỏ hàng</button>
+        </form>
+
+    </div>
+
+    <div class="mota">
+        <h2>CÁCH 3: CUNG CẤP MÃ HÓA ĐƠN</h2>
+        <p>Nếu bạn đã đặt hàng thành công tại các website Trung Quốc và muốn nhờ Ptite Shop vận chuyển hàng hộ, vui lòng cung cấp mã hóa đơn.</p>
+
+        <form id="addhoadon" action="<?php echo $this->getUrl('dathang/index/addhoadon') ?>" method="POST">
+            <div class="form-group">
+                <label for="orderid">Mã hóa đơn:</label>
+                <input type="text" name="orderid" class="form-control" id="orderid" required>
+            </div>
+            <button type="submit" class="btn btn-default">Thêm vào giỏ hàng</button>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    $j(document).ready(function(){
+        var rate = <?php echo Mage::getStoreConfig('remotecart/settings/rating') ?>;
+        $j('#gia').on('keyup', function(){
+            if ($j(this).val() != "") {
+                $j('.customprice').text(number_format($j(this).val()*rate));
+            } else {
+                $j('.customprice').text(0);
+            }
+        });
+    });
+
+    $j('#addhoadon').on('submit', function (e) {
+        e.preventDefault();
+        var data = {
+            product: 1,
+            name: $j('#orderid').val(),
+            image: $j('.logo-light').attr('src'),
+            qty: 1,
+            url: $j('#orderid').val(),
+            price: $j('#gia').val(),
+            option: {}
+        };
+
+        $j.ajax({
+            method: "POST",
+            url: "/checkout/cart/add/",
+            data: data,
+            success: function(response) {
+                window.location.href = '/checkout/cart';
+            }
+        });
+    });
+
+    $j('#addmota').on('submit', function (e) {
+        e.preventDefault();
+        var data = {
+            product: 1,
+            name: $j('#url').val(),
+            image: $j('.logo-light').attr('src'),
+            qty: $j('#qty').val(),
+            url: $j('#url').val(),
+            price: $j('#gia').val(),
+            option: {0: {optionTitle: "Mô Tả", optionValue: $j('#mota').val()}}
+        };
+
+        $j.ajax({
+            method: "POST",
+            url: "/checkout/cart/add/",
+            data: data,
+            success: function(response) {
+                window.location.href = '/checkout/cart';
+            }
+        });
+    });
+
+    function number_format (number, decimals, decPoint, thousandsSep) {
+
+        number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+        var n = !isFinite(+number) ? 0 : +number;
+        var prec = !isFinite(+decimals) ? 0 : Math.abs(decimals);
+        var sep = (typeof thousandsSep === 'undefined') ? ',' : thousandsSep;
+        var dec = (typeof decPoint === 'undefined') ? '.' : decPoint;
+        var s = '';
+
+        var toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + (Math.round(n * k) / k)
+                    .toFixed(prec)
+        };
+
+        // @todo: for IE parseFloat(0.55).toFixed(0) = 0;
+        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+        if (s[0].length > 3) {
+            s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep)
+        }
+        if ((s[1] || '').length < prec) {
+            s[1] = s[1] || '';
+            s[1] += new Array(prec - s[1].length + 1).join('0')
+        }
+
+        return s.join(dec)
+    }
+</script>
